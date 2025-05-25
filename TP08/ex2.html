@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de mot de passe</title>
+</head>
+<body>
+    <h1>Générateur de mot de passe</h1>
+
+    <form method="POST">
+        <label for="longueur">Longueur du mot de passe :</label>
+        <input type="number" name="longueur" id="longueur" min="4" required>
+        <button type="submit">Générer</button>
+    </form>
+
+    <?php
+    function genererMotDePasse($longueur) {
+        $caracteres = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+';
+        $motDePasse = '';
+        $max = strlen($caracteres) - 1;
+
+        for ($i = 0; $i < $longueur; $i++) {
+            $motDePasse .= $caracteres[rand(0, $max)];
+        }
+
+        return $motDePasse;
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $longueur = (int)$_POST["longueur"];
+        if ($longueur >= 4) {
+            $mdp = genererMotDePasse($longueur);
+            echo "<h2>Mot de passe généré : $mdp</h2>";
+        } else {
+            echo "<p>La longueur doit être d'au moins 4 caractères.</p>";
+        }
+    }
+    ?>
+</body>
+</html>

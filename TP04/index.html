@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayyoub Khalil | CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color-light: #f0faff;
+      --bg-color-dark: #181818;
+      --text-color-light: #333;
+      --text-color-dark: #f9f9f9;
+      --primary-color: #00bcd4;
+      --secondary-color: #a7f5a3;
+      --highlight-color: #ff8c00;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --card-bg-light: rgba(255, 255, 255, 0.85);
+      --card-bg-dark: rgba(22, 27, 34, 0.9);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color-light);
+      color: var(--text-color-light);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px;
+      background-color: var(--card-bg-light);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: var(--secondary-color);
+      border-radius: 15px;
+    }
+
+    .profile-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-pic {
+      margin: 15px;
+    }
+
+    .profile-pic img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary-color);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-info {
+      margin-left: 30px;
+      max-width: 400px;
+      text-align: left;
+    }
+
+    .name {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #c0392b;
+      font-family: 'Algerian', cursive;
+    }
+
+    .title {
+      font-size: 1.3em;
+      color: var(--highlight-color);
+    }
+
+    .contact p {
+      font-size: 1.1em;
+      margin: 10px 0;
+    }
+
+    .contact i {
+      color: var(--primary-color);
+      margin-right: 10px;
+    }
+
+    section {
+      background-color: var(--card-bg-light);
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px var(--shadow-color);
+    }
+
+    section h2 {
+      font-size: 1.8em;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    section h3 {
+      font-size: 1.1em;
+      color: var(--text-color-light);
+    }
+
+    .skills, .education, .certifications {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .skills li, .education li, .certifications li {
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .skills li::before, .education li::before, .certifications li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+    }
+
+    .progress-bar {
+      background-color: #e0e0e0;
+      border-radius: 8px;
+      height: 10px;
+      margin-top: 5px;
+    }
+
+    .progress {
+      background-color: var(--primary-color);
+      height: 100%;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      border-top: 1px solid var(--primary-color);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: var(--text-color-light);
+      font-size: 1.5em;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    #dark-mode-checkbox {
+      display: none;
+    }
+
+    .dark-mode-label {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 999;
+      backdrop-filter: blur(5px);
+      transition: background-color 0.3s ease;
+    }
+
+    #dark-mode-checkbox:checked ~ .main-container {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+    }
+
+    #dark-mode-checkbox:checked ~ .main-container header {
+      background-color: var(--secondary-color);
+    }
+
+    #dark-mode-checkbox:checked ~ .main-container section {
+      background-color: var(--card-bg-dark);
+    }
+
+    #dark-mode-checkbox:checked ~ .main-container footer {
+      background-color: var(--bg-color-dark);
+    }
+
+    #dark-mode-checkbox:checked + .dark-mode-label::before {
+      content: "Passer en mode clair";
+    }
+
+    .dark-mode-label::before {
+      content: "Passer en mode sombre";
+    }
+
+    h3.program, h3.webdev, h3.filiere, h3.bac, h3.bac2, h3.bac3 {
+      font-family: 'Algerian', cursive;
+      color: #1f618d;
+    }
+    p{
+      color: rgb(239, 8, 135);
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox" id="dark-mode-checkbox">
+  <label for="dark-mode-checkbox" class="dark-mode-label"></label>
+
+  <div class="main-container">
+    <header>
+      <div class="profile-section">
+        <div class="profile-pic">
+          <img src="ff.jpg" alt="Ayyoub Khalil">
+        </div>
+        <div class="profile-info">
+          <h1 class="name">Ayyoub Khalil</h1>
+          <p class="title">Étudiant à la Faculté Polydisciplinaire d'Ouarzazate</p>
+          <div class="contact">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:adnaneradi@gmail.com">adnaneradi@gmail.com</a></p>
+            <p><i class="fas fa-phone"></i> <a href="tel:+212687544523">+212 687544523</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Zagora, Maroc</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section>
+  <h2><i class="fas fa-language"></i> Langues</h2>
+  <p>Arabe : Courant</p>
+  <p>Anglais : Intermédiaire</p>
+  <p>Français : Bon</p>
+  <p>Tamazight : Langue maternelle</p>
+</section>
+
+
+    <section>
+      <h2><i class="fas fa-cogs"></i> Compétences</h2>
+      <div class="skills">
+        <div>
+          <h3 class="program">Programmation</h3>
+          <ul>
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>C</li>
+            <li>PHP</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="webdev">Web Development</h3>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><i class="fas fa-graduation-cap"></i> Éducation</h2>
+      <div>
+        <h3 class="filiere">Filière : SMI</h3>
+        <p><i class="fas fa-university"></i> Faculté Polydisciplinaire d'Ouarzazate</p>
+        <p><i class="fas fa-calendar-alt"></i> Examen final : 12 mai 2025</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><i class="fas fa-certificate"></i> Certifications</h2>
+      <div class="certifications">
+        <div>
+          <h3 class="bac">Baccalauréat</h3>
+          <p><i class="fas fa-calendar-check"></i> Juin 2021</p>
+        </div>
+        <div>
+          <h3 class="bac2">Bac +2</h3>
+          <p><i class="fas fa-calendar-check"></i> Juin 2024</p>
+        </div>
+        <div>
+          <h3 class="bac3">Bac +3 (Licence professionnelle)</h3>
+          <p><i class="fas fa-calendar-check"></i> Prévu en 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Ayyoub Khalil. Bienvenue !</p>
+      <div class="social-links">
+        <a href="mailto:adnaneradi@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/+212687544523"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+212699847655"><i class="fas fa-phone"></i></a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+CREATE TABLE warriors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL,
+    damage INT DEFAULT 0
+);

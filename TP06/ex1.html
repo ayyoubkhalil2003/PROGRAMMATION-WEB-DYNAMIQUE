@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice DOM</title>
+</head>
+<body>
+    <script>
+    let div = document.createElement('div');
+let p = document.createElement('p');
+p.textContent = 'Ceci est un paragraphe';
+div.appendChild(p);
+document.body.appendChild(div);
+p.textContent = 'Le texte a été modifié';
+p.style.backgroundColor = 'lightblue';
+p.style.textAlign = 'center';
+div.onclick = function() {
+    p.textContent = 'Un clic a été détecté';
+};</script>
+</body>
+</html>
